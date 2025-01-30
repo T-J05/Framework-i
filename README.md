@@ -114,12 +114,14 @@ export const createStore = (reducer) => {
          * @param {Function} listener - Función suscriptora.
          */
         subscribe: (listener) => {
-            listeners.push(listener);
+            listeners.push(listener);  // Añade el listener a la lista
             return () => {
                 const index = listeners.indexOf(listener);
-                if (index > -1) listeners.splice(index, 1);
+                if (index !== -1) {
+                    listeners.splice(index, 1); //  Elimina correctamente el listener
+                }
             };
-        }
+        },
     };
 };
 ```
