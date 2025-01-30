@@ -67,7 +67,7 @@ export const createStore = (reducer) => {
          */
         dispatch: (action) => {
             state = reducer(state, action); // Calcula el nuevo estado
-            listeners.forEach(listener => listener()); // Notifica a los suscriptores
+            listeners.forEach(listener => listener()); // Notifica a los suscriptores y llama a las funciones que estan dentro
         },
 
         /**
@@ -75,8 +75,14 @@ export const createStore = (reducer) => {
          * @param {Function} listener - Función suscriptora.
          */
         subscribe: (listener) => {
-            listeners.push(listener);
-            return () => listeners.filter(l => l !== listener); // Permite desuscribirse
-        }
+            listeners.push(listener);  // Añade el listener a la lista
+            return () => {
+                const index = listeners.indexOf(listener);
+                if (index !== -1) {
+                    listeners.splice(index, 1); //  Elimina correctamente el listener
+                }
+            };
+        },
+        
     };
 };
