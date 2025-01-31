@@ -133,6 +133,8 @@ export const createStore = (reducer) => {
 - **`subscribe`**: Permite que un componente escuche los cambios de estado y también permite desuscribirse.
 
 ---
+## Ejemplo de implementacion
+[App TO-DO](https://github.com/T-J05/App-To-Do)
 
 ## Conclusión
 Este mini-framework proporciona un sistema básico para manejar el estado de la aplicación de manera estructurada y eficiente, similar a React con Redux. Al seguir una arquitectura unidireccional como Flux, evitamos la propagación descontrolada de cambios en el estado, manteniendo la aplicación predecible y modular.
